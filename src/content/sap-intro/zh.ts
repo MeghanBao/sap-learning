@@ -355,6 +355,33 @@ SAP 的威力在于**跨模块打通**。下面用两条最经典的主流程感
           explanation:
             "P2P：PR → PO → GR → IR → 付款。记住这条链，采购流程就有了骨架。",
         },
+        {
+          id: "e2e-q5",
+          type: "screen",
+          prompt:
+            "动手试试：在下面这张仿 ME21N 界面上创建一张采购订单——供应商 1000、物料 R-1001、数量 10、工厂 1000，填好后点“保存”。",
+          screenTitle: "创建采购订单 · ME21N",
+          submitLabel: "保存",
+          fields: [
+            {
+              id: "vendor",
+              label: "供应商 Vendor",
+              expected: "1000",
+              placeholder: "输入供应商编号",
+              hint: "本题用 1000",
+            },
+            {
+              id: "material",
+              label: "物料 Material",
+              expected: "R-1001",
+              placeholder: "输入物料编号",
+            },
+            { id: "qty", label: "数量 Quantity", type: "number", expected: "10" },
+            { id: "plant", label: "工厂 Plant", expected: "1000" },
+          ],
+          explanation:
+            "创建采购订单（ME21N）本质就是把“向谁买(供应商)、买什么(物料)、买多少(数量)、送到哪个工厂”这几项填好。真实系统字段更多，但主干就是这四项。",
+        },
       ],
     },
   ],

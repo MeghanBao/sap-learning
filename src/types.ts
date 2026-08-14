@@ -7,7 +7,12 @@
 // adding a new type + component — the lessons, progress store, and routing
 // never change.
 
-export type ChallengeType = "mcq" | "scenario" | "multi" | "matching";
+export type ChallengeType =
+  | "mcq"
+  | "scenario"
+  | "multi"
+  | "matching"
+  | "screen";
 
 export interface BaseChallenge {
   id: string;
@@ -37,7 +42,34 @@ export interface MatchingChallenge extends BaseChallenge {
   pairs: { left: string; right: string }[];
 }
 
-export type Challenge = ChoiceChallenge | MultiChallenge | MatchingChallenge;
+/** One input field on a simulated SAP screen. */
+export interface ScreenField {
+  id: string;
+  label: string;
+  type?: "text" | "number";
+  placeholder?: string;
+  /** Correct value; compared trimmed + case-insensitive. */
+  expected: string;
+  hint?: string;
+}
+
+/**
+ * "Hardcore" hands-on challenge: a fake SAP/Fiori screen the learner must fill
+ * out correctly and submit — a guided task, deterministic and fully offline.
+ * (The future "live OpenUI5 code" type will slot in the same way.)
+ */
+export interface ScreenChallenge extends BaseChallenge {
+  type: "screen";
+  screenTitle: string;
+  fields: ScreenField[];
+  submitLabel: string;
+}
+
+export type Challenge =
+  | ChoiceChallenge
+  | MultiChallenge
+  | MatchingChallenge
+  | ScreenChallenge;
 
 export interface Lesson {
   id: string;

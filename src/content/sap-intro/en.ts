@@ -382,6 +382,33 @@ for consistency (quantity, amount). Only when all three agree is payment release
           explanation:
             "P2P: PR → PO → GR → IR → payment. Remember this chain and the procurement flow has its skeleton.",
         },
+        {
+          id: "e2e-q5",
+          type: "screen",
+          prompt:
+            "Try it hands-on: on the mock ME21N screen below, create a purchase order — Vendor 1000, Material R-1001, Quantity 10, Plant 1000 — then click “Save.”",
+          screenTitle: "Create Purchase Order · ME21N",
+          submitLabel: "Save",
+          fields: [
+            {
+              id: "vendor",
+              label: "Vendor",
+              expected: "1000",
+              placeholder: "Enter vendor number",
+              hint: "Use 1000 for this task",
+            },
+            {
+              id: "material",
+              label: "Material",
+              expected: "R-1001",
+              placeholder: "Enter material number",
+            },
+            { id: "qty", label: "Quantity", type: "number", expected: "10" },
+            { id: "plant", label: "Plant", expected: "1000" },
+          ],
+          explanation:
+            "Creating a purchase order (ME21N) is essentially filling in who you buy from (vendor), what (material), how much (quantity), and which plant it ships to. Real systems have more fields, but this is the backbone.",
+        },
       ],
     },
   ],

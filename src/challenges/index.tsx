@@ -3,6 +3,7 @@ import type { StringKey } from "../i18n";
 import ChoiceChallenge from "./ChoiceChallenge";
 import MultiChallenge from "./MultiChallenge";
 import MatchingChallenge from "./MatchingChallenge";
+import ScreenChallenge from "./ScreenChallenge";
 
 // The registry: map a challenge `type` to the component that renders + grades
 // it. This is the single place to wire in a new interactive challenge type.
@@ -21,6 +22,8 @@ export function ChallengeRenderer({
       return <MultiChallenge challenge={challenge} onResult={onResult} />;
     case "matching":
       return <MatchingChallenge challenge={challenge} onResult={onResult} />;
+    case "screen":
+      return <ScreenChallenge challenge={challenge} onResult={onResult} />;
   }
 }
 
@@ -31,5 +34,6 @@ export function challengeTypeKey(type: Challenge["type"]): StringKey {
     scenario: "typeScenario",
     multi: "typeMulti",
     matching: "typeMatching",
+    screen: "typeScreen",
   }[type] as StringKey;
 }

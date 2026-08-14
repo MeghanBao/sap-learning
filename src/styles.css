@@ -363,6 +363,103 @@ a {
   font: inherit;
   background: #fff;
 }
+/* simulated SAP screen */
+.sap-screen {
+  border: 1px solid #b9c4d4;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 6px 0 4px;
+  box-shadow: 0 2px 10px rgba(30, 50, 80, 0.06);
+}
+.sap-titlebar {
+  background: linear-gradient(#3a6ea5, #2b5486);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 14px;
+}
+.sap-form {
+  background: #f3f6fa;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sap-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.sap-label {
+  font-size: 14px;
+  color: #33475b;
+  text-align: right;
+}
+.sap-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sap-input {
+  flex: none;
+  width: 220px;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #a9b6c8;
+  border-radius: 4px;
+  font: inherit;
+  background: #fff;
+}
+.sap-input:focus {
+  outline: 2px solid #3a6ea5;
+  outline-offset: -1px;
+}
+.sap-input.right {
+  border-color: var(--ok);
+  background: #e7f6ee;
+}
+.sap-input.wrong {
+  border-color: var(--bad);
+  background: #fdecec;
+}
+.sap-hint {
+  font-size: 12px;
+  color: var(--mut);
+}
+.sap-toolbar {
+  background: #e7edf4;
+  border-top: 1px solid #cfd8e5;
+  padding: 10px 14px;
+}
+.sap-btn {
+  background: #fff;
+  border: 1px solid #a9b6c8;
+  border-radius: 5px;
+  padding: 7px 16px;
+  font: inherit;
+  cursor: pointer;
+}
+.sap-btn:hover:not(:disabled) {
+  border-color: #3a6ea5;
+}
+.sap-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.sap-btn.ghost {
+  background: transparent;
+}
+@media (max-width: 520px) {
+  .sap-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .sap-label {
+    text-align: left;
+  }
+}
+
 .btn-check {
   margin-top: 14px;
   background: var(--brand);

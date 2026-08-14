@@ -43,6 +43,7 @@ export const strings = {
     nextLesson: "下一节：",
     backToCourse: "返回轨道总览 →",
     check: "检查",
+    retry: "重做",
     correct: "✅ 正确！",
     wrong: "❌ 再想想",
     multiHint: "（多选，选出所有正确项）",
@@ -54,6 +55,7 @@ export const strings = {
     typeScenario: "情景决策",
     typeMulti: "多选",
     typeMatching: "配对",
+    typeScreen: "模拟操作",
   },
   en: {
     tagline: "Free · interactive SAP learning",
@@ -77,6 +79,7 @@ export const strings = {
     nextLesson: "Next: ",
     backToCourse: "Back to track overview →",
     check: "Check",
+    retry: "Retry",
     correct: "✅ Correct!",
     wrong: "❌ Try again",
     multiHint: "(Select all correct answers)",
@@ -88,6 +91,7 @@ export const strings = {
     typeScenario: "Scenario",
     typeMulti: "Multiple choice",
     typeMatching: "Matching",
+    typeScreen: "Hands-on",
   },
 } as const;
 
