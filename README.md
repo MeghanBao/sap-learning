@@ -24,11 +24,11 @@ fully in the browser, hosted free on GitHub Pages.
 
 | Track | Level | Status |
 |-------|-------|--------|
-| SAP 入门总览 (SAP Fundamentals) | Beginner | ✅ available (5 lessons, incl. a hands-on ME21N screen) |
-| UI5 初体验 (UI5 Taster) | Intermediate | ✅ available (live OpenUI5 code in the browser) |
-| 财务 FI/CO | Beginner→Intermediate | 🔜 planned |
-| MM/SD 业务流程 | Intermediate | 🔜 planned |
-| ABAP 开发 | Technical | 🔜 planned |
+| SAP 入门总览 (SAP Fundamentals) | Beginner | ✅ 5 lessons (incl. a hands-on ME21N screen) |
+| 财务 FI/CO (Finance FI/CO) | Intermediate | ✅ 4 lessons (incl. a hands-on FB50 screen) |
+| MM/SD 业务流程 (MM/SD Processes) | Intermediate | ✅ 4 lessons (incl. a hands-on VA01 screen) |
+| ABAP 开发 (ABAP Development) | Advanced | ✅ 4 lessons (concept + code-reading) |
+| UI5 初体验 (UI5 Taster) | Intermediate | ✅ live OpenUI5 code in the browser |
 
 ### Challenge types
 
@@ -71,10 +71,13 @@ src/
 │   ├── MatchingChallenge # "matching" (pair up)
 │   ├── ScreenChallenge   # "screen" (fill a simulated SAP screen)
 │   └── CodeChallenge     # "code" (live OpenUI5 in a sandboxed iframe)
-├── content/
+├── content/              # each track = zh.ts + en.ts (identical ids), typed data + markdown
 │   ├── index.ts          # per-locale course catalog
-│   ├── sap-intro/        # track 1: zh.ts + en.ts (identical ids), typed data + markdown
-│   └── ui5-taster/       # track 2: live-code track (zh.ts + en.ts)
+│   ├── sap-intro/        # fundamentals (+ hands-on ME21N screen)
+│   ├── fi-co/            # Finance FI/CO (+ hands-on FB50 screen)
+│   ├── mm-sd/            # MM/SD processes (+ hands-on VA01 screen)
+│   ├── abap/             # ABAP development (concept + code-reading)
+│   └── ui5-taster/       # live OpenUI5 code track
 ├── components/           # Home, CoursePage, LessonView, Markdown
 ├── i18n.ts               # locale state + UI string dictionary (zh / en)
 └── progress.ts           # localStorage progress (per challenge id)

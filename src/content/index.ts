@@ -6,12 +6,18 @@ import type { Course } from "../types";
 import type { Locale } from "../i18n";
 import { sapIntroZh } from "./sap-intro/zh";
 import { sapIntroEn } from "./sap-intro/en";
+import { fiCoZh } from "./fi-co/zh";
+import { fiCoEn } from "./fi-co/en";
+import { mmSdZh } from "./mm-sd/zh";
+import { mmSdEn } from "./mm-sd/en";
+import { abapZh } from "./abap/zh";
+import { abapEn } from "./abap/en";
 import { ui5TasterZh } from "./ui5-taster/zh";
 import { ui5TasterEn } from "./ui5-taster/en";
 
 const catalog: Record<Locale, Course[]> = {
-  zh: [sapIntroZh, ui5TasterZh],
-  en: [sapIntroEn, ui5TasterEn],
+  zh: [sapIntroZh, fiCoZh, mmSdZh, abapZh, ui5TasterZh],
+  en: [sapIntroEn, fiCoEn, mmSdEn, abapEn, ui5TasterEn],
 };
 
 export function getCourses(locale: Locale): Course[] {
