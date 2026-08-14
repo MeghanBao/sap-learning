@@ -51,6 +51,31 @@ a {
   font-size: 13px;
   opacity: 0.9;
 }
+.lang-switch {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 3px;
+}
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.lang-btn.active {
+  background: #fff;
+  color: var(--brand-d);
+  font-weight: 600;
+  opacity: 1;
+}
 .content {
   flex: 1;
   width: 100%;

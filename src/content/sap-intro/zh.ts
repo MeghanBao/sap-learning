@@ -1,10 +1,10 @@
 import type { Course } from "../../types";
 
-// Track 1 — "SAP 入门总览". Beginner-friendly, concept + scenario driven so it
-// works entirely client-side. Content is authored in Chinese first; the data
-// shape is i18n-ready (a future locale can carry translated title/body/options).
+// Track 1 — "SAP 入门总览" (Chinese). Beginner-friendly, concept + scenario
+// driven so it works entirely client-side. The English twin lives in ./en.ts
+// with identical ids so progress/deep-links survive a language switch.
 
-export const sapIntro: Course = {
+export const sapIntroZh: Course = {
   id: "sap-intro",
   title: "SAP 入门总览",
   subtitle: "零基础也能懂：SAP 是什么、模块怎么分、怎么导航、数据怎么流。",

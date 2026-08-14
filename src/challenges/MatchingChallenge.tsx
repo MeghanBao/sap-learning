@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import type { MatchingChallenge as MatchingType } from "../types";
+import { useT } from "../i18n";
 import { Feedback } from "./ChoiceChallenge";
 
 // Match each left item to its correct right item via a dropdown. The right-hand
@@ -11,6 +12,7 @@ export default function MatchingChallenge({
   challenge: MatchingType;
   onResult: (correct: boolean) => void;
 }) {
+  const t = useT();
   const rights = useMemo(
     () => shuffle(challenge.pairs.map((p) => p.right)),
     [challenge],
@@ -45,7 +47,7 @@ export default function MatchingChallenge({
                 }
               >
                 <option value="" disabled>
-                  选择…
+                  {t("selectPlaceholder")}
                 </option>
                 {rights.map((r) => (
                   <option key={r} value={r}>
@@ -66,7 +68,7 @@ export default function MatchingChallenge({
             onResult(correct);
           }}
         >
-          检查
+          {t("check")}
         </button>
       ) : (
         <Feedback correct={correct} explanation={challenge.explanation} />

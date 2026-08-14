@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { MultiChallenge as MultiType } from "../types";
+import { useT } from "../i18n";
 import { Feedback } from "./ChoiceChallenge";
 
 // Multiple-correct-answers challenge; every correct option must be selected and
@@ -11,6 +12,7 @@ export default function MultiChallenge({
   challenge: MultiType;
   onResult: (correct: boolean) => void;
 }) {
+  const t = useT();
   const [selected, setSelected] = useState<Set<number>>(new Set());
   const [checked, setChecked] = useState(false);
 
@@ -28,7 +30,7 @@ export default function MultiChallenge({
   return (
     <div className="challenge">
       <p className="challenge-prompt">{challenge.prompt}</p>
-      <p className="hint">（多选，选出所有正确项）</p>
+      <p className="hint">{t("multiHint")}</p>
       <ul className="options">
         {challenge.options.map((opt, i) => {
           const isAnswer = answerSet.has(i);
@@ -64,7 +66,7 @@ export default function MultiChallenge({
             onResult(correct);
           }}
         >
-          检查
+          {t("check")}
         </button>
       ) : (
         <Feedback correct={correct} explanation={challenge.explanation} />

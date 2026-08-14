@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ChoiceChallenge as ChoiceType } from "../types";
+import { useT } from "../i18n";
 
 // Single-answer challenge, used for both "mcq" and "scenario" types.
 export default function ChoiceChallenge({
@@ -9,6 +10,7 @@ export default function ChoiceChallenge({
   challenge: ChoiceType;
   onResult: (correct: boolean) => void;
 }) {
+  const t = useT();
   const [picked, setPicked] = useState<number | null>(null);
   const [checked, setChecked] = useState(false);
   const correct = picked === challenge.answer;
@@ -48,7 +50,7 @@ export default function ChoiceChallenge({
             onResult(correct);
           }}
         >
-          检查
+          {t("check")}
         </button>
       ) : (
         <Feedback correct={correct} explanation={challenge.explanation} />
@@ -64,9 +66,10 @@ export function Feedback({
   correct: boolean;
   explanation?: string;
 }) {
+  const t = useT();
   return (
     <div className={`feedback ${correct ? "ok" : "bad"}`}>
-      <strong>{correct ? "✅ 正确！" : "❌ 再想想"}</strong>
+      <strong>{correct ? t("correct") : t("wrong")}</strong>
       {explanation && <p>{explanation}</p>}
     </div>
   );

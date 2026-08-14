@@ -8,8 +8,9 @@ SAP training is almost all paid. SAP Learning is an open, free alternative: shor
 interactive lessons with instant-feedback exercises, no login, no cost. Runs
 fully in the browser, hosted free on GitHub Pages.
 
-> Content is currently authored in Chinese (中文); the data model is i18n-ready
-> so English and other locales can be added.
+> Bilingual: **English + 中文**, switchable in the top bar (remembers your
+> choice, and defaults to your browser language). Progress and deep links are
+> keyed by stable ids, so switching language mid-track keeps your place.
 
 ## Why
 
@@ -55,9 +56,10 @@ src/
 │   ├── MultiChallenge    # "multi" (many answers)
 │   └── MatchingChallenge # "matching" (pair up)
 ├── content/
-│   ├── index.ts          # course catalog
-│   └── sap-intro/        # track 1, lessons as typed data + markdown bodies
+│   ├── index.ts          # per-locale course catalog
+│   └── sap-intro/        # track 1: zh.ts + en.ts (identical ids), typed data + markdown
 ├── components/           # Home, CoursePage, LessonView, Markdown
+├── i18n.ts               # locale state + UI string dictionary (zh / en)
 └── progress.ts           # localStorage progress (per challenge id)
 ```
 
@@ -67,14 +69,17 @@ code that really runs in the browser) means adding one component and one line in
 extensibility is intentional: it lets the "interactive" bar rise over time
 without a rewrite.
 
-**Adding a lesson or track**: author it as typed data under `content/` and list
-it in `content/index.ts`. The home page and routes pick it up automatically.
+**Adding a lesson or track**: author it as typed data (a `zh.ts` / `en.ts` pair
+with matching ids) under `content/`, and list it per-locale in
+`content/index.ts`. The home page and routes pick it up automatically.
 
 ## Contributing content
 
 Lessons are just data + markdown — no build knowledge needed to write one. Open
 an issue proposing a track/lesson, then submit a PR adding it under
-`src/content/`. Accuracy first: cite the real T-codes, processes, and terms.
+`src/content/` (please provide both `zh` and `en`; keep the ids identical so
+progress and links stay in sync). Accuracy first: cite the real T-codes,
+processes, and terms.
 
 ## Deployment
 

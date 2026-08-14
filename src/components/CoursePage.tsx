@@ -1,16 +1,19 @@
 import { Link, useParams } from "react-router-dom";
 import { getCourse } from "../content";
 import { isLessonDone, lessonProgress } from "../progress";
+import { useLocale, useT } from "../i18n";
 
 export default function CoursePage() {
+  const t = useT();
+  const { locale } = useLocale();
   const { courseId } = useParams();
-  const course = courseId ? getCourse(courseId) : undefined;
+  const course = courseId ? getCourse(locale, courseId) : undefined;
 
   if (!course) {
     return (
       <div>
-        <p>找不到这个轨道。</p>
-        <Link to="/">← 返回首页</Link>
+        <p>{t("notFoundCourse")}</p>
+        <Link to="/">{t("backHome")}</Link>
       </div>
     );
   }
@@ -18,7 +21,7 @@ export default function CoursePage() {
   return (
     <div>
       <Link to="/" className="back">
-        ← 所有轨道
+        {t("allTracks")}
       </Link>
       <h1>{course.title}</h1>
       <p className="course-sub">{course.subtitle}</p>

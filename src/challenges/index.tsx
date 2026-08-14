@@ -1,4 +1,5 @@
 import type { Challenge } from "../types";
+import type { StringKey } from "../i18n";
 import ChoiceChallenge from "./ChoiceChallenge";
 import MultiChallenge from "./MultiChallenge";
 import MatchingChallenge from "./MatchingChallenge";
@@ -23,11 +24,12 @@ export function ChallengeRenderer({
   }
 }
 
-export function challengeTypeLabel(type: Challenge["type"]): string {
+/** Map a challenge type to its UI string key (rendered via `t()` by the caller). */
+export function challengeTypeKey(type: Challenge["type"]): StringKey {
   return {
-    mcq: "单选",
-    scenario: "情景决策",
-    multi: "多选",
-    matching: "配对",
-  }[type];
+    mcq: "typeMcq",
+    scenario: "typeScenario",
+    multi: "typeMulti",
+    matching: "typeMatching",
+  }[type] as StringKey;
 }

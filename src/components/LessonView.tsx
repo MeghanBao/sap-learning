@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getCourse } from "../content";
-import { ChallengeRenderer, challengeTypeLabel } from "../challenges";
+import { ChallengeRenderer, challengeTypeKey } from "../challenges";
 import Markdown from "./Markdown";
 import { isChallengeDone, markChallengeDone } from "../progress";
+import { useLocale, useT } from "../i18n";
 
 export default function LessonView() {
+  const t = useT();
+  const { locale } = useLocale();
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
-  const course = courseId ? getCourse(courseId) : undefined;
+  const course = courseId ? getCourse(locale, courseId) : undefined;
   const index = course?.lessons.findIndex((l) => l.id === lessonId) ?? -1;
   const lesson = index >= 0 ? course!.lessons[index] : undefined;
 
@@ -20,8 +23,8 @@ export default function LessonView() {
   if (!course || !lesson) {
     return (
       <div>
-        <p>找不到这节课。</p>
-        <Link to="/">← 返回首页</Link>
+        <p>{t("notFoundLesson")}</p>
+        <Link to="/">{t("backHome")}</Link>
       </div>
     );
   }
@@ -46,12 +49,12 @@ export default function LessonView() {
 
       {lesson.challenges.length > 0 && (
         <section className="challenges">
-          <h2 className="section-title">练习</h2>
+          <h2 className="section-title">{t("exercises")}</h2>
           {lesson.challenges.map((c) => (
             <div key={c.id} className="challenge-wrap">
               <div className="challenge-tag">
-                {challengeTypeLabel(c.type)}
-                {done.has(c.id) && <span className="tag-done"> ✓ 已完成</span>}
+                {t(challengeTypeKey(c.type))}
+                {done.has(c.id) && <span className="tag-done"> {t("doneTag")}</span>}
               </div>
               <ChallengeRenderer
                 challenge={c}
@@ -64,18 +67,19 @@ export default function LessonView() {
 
       <div className="lesson-nav">
         {allDone && lesson.challenges.length > 0 && (
-          <p className="lesson-complete">🎉 本节完成！</p>
+          <p className="lesson-complete">{t("lessonComplete")}</p>
         )}
         {next ? (
           <button
             className="btn-next"
             onClick={() => navigate(`/course/${course.id}/lesson/${next.id}`)}
           >
-            下一节：{next.title} →
+            {t("nextLesson")}
+            {next.title} →
           </button>
         ) : (
           <Link to={`/course/${course.id}`} className="btn-next">
-            返回轨道总览 →
+            {t("backToCourse")}
           </Link>
         )}
       </div>
