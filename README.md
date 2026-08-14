@@ -2,6 +2,8 @@
 
 **A free, interactive, freeCodeCamp-style platform for learning SAP — from beginner to advanced.**
 
+🔗 **Live site: https://meghanbao.github.io/sap-learning/**
+
 SAP training is almost all paid. SAP Learning is an open, free alternative: short
 interactive lessons with instant-feedback exercises, no login, no cost. Runs
 fully in the browser, hosted free on GitHub Pages.
@@ -77,9 +79,14 @@ an issue proposing a track/lesson, then submit a PR adding it under
 ## Deployment
 
 Pushing to `main` builds and deploys to GitHub Pages via
-`.github/workflows/deploy.yml`. Enable Pages → “GitHub Actions” in repo settings.
+`.github/workflows/deploy.yml` — the live site above updates automatically.
+
 The Vite `base` is set to `/sap-learning/` to match the project site path, and
 routing uses `HashRouter` so deep links work without server rewrites.
+
+**One-time setup** (already done for this repo; needed if you fork it): in repo
+**Settings → Pages**, set **Source** to **“GitHub Actions.”** Until that's set,
+the deploy job fails with a 404 (“Ensure GitHub Pages has been enabled”).
 
 ## License
 
