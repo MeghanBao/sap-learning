@@ -12,7 +12,8 @@ export type ChallengeType =
   | "scenario"
   | "multi"
   | "matching"
-  | "screen";
+  | "screen"
+  | "code";
 
 export interface BaseChallenge {
   id: string;
@@ -65,11 +66,25 @@ export interface ScreenChallenge extends BaseChallenge {
   submitLabel: string;
 }
 
+/**
+ * The most hardcore type: real code that actually runs. The learner's code is
+ * executed inside a sandboxed iframe that boots the OpenUI5 runtime from a CDN,
+ * renders real controls, and reports back what got rendered for grading.
+ */
+export interface CodeChallenge extends BaseChallenge {
+  type: "code";
+  language: "ui5";
+  starterCode: string;
+  /** Correct when the rendered output's text contains this (case-insensitive). */
+  expectContains: string;
+}
+
 export type Challenge =
   | ChoiceChallenge
   | MultiChallenge
   | MatchingChallenge
-  | ScreenChallenge;
+  | ScreenChallenge
+  | CodeChallenge;
 
 export interface Lesson {
   id: string;

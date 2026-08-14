@@ -24,10 +24,24 @@ fully in the browser, hosted free on GitHub Pages.
 
 | Track | Level | Status |
 |-------|-------|--------|
-| SAP 入门总览 (SAP Fundamentals) | Beginner | ✅ available (5 lessons) |
+| SAP 入门总览 (SAP Fundamentals) | Beginner | ✅ available (5 lessons, incl. a hands-on ME21N screen) |
+| UI5 初体验 (UI5 Taster) | Intermediate | ✅ available (live OpenUI5 code in the browser) |
 | 财务 FI/CO | Beginner→Intermediate | 🔜 planned |
 | MM/SD 业务流程 | Intermediate | 🔜 planned |
 | ABAP 开发 | Technical | 🔜 planned |
+
+### Challenge types
+
+Exercises are graded instantly in the browser. Current types:
+
+- **mcq / scenario** — single-answer choice / decision
+- **multi** — multiple correct answers
+- **matching** — pair items up
+- **screen** — hands-on: fill out a simulated SAP/Fiori screen (e.g. create a PO
+  in a mock ME21N), graded per field
+- **code** — write real **OpenUI5** code that actually runs in a sandboxed
+  iframe and renders live controls; graded on the rendered output *(needs
+  internet: the UI5 runtime loads from the OpenUI5 CDN)*
 
 ## Run locally
 
@@ -54,20 +68,22 @@ src/
 │   ├── index.tsx         # registry: challenge `type` → component + grader
 │   ├── ChoiceChallenge   # "mcq" / "scenario" (single answer)
 │   ├── MultiChallenge    # "multi" (many answers)
-│   └── MatchingChallenge # "matching" (pair up)
+│   ├── MatchingChallenge # "matching" (pair up)
+│   ├── ScreenChallenge   # "screen" (fill a simulated SAP screen)
+│   └── CodeChallenge     # "code" (live OpenUI5 in a sandboxed iframe)
 ├── content/
 │   ├── index.ts          # per-locale course catalog
-│   └── sap-intro/        # track 1: zh.ts + en.ts (identical ids), typed data + markdown
+│   ├── sap-intro/        # track 1: zh.ts + en.ts (identical ids), typed data + markdown
+│   └── ui5-taster/       # track 2: live-code track (zh.ts + en.ts)
 ├── components/           # Home, CoursePage, LessonView, Markdown
 ├── i18n.ts               # locale state + UI string dictionary (zh / en)
 └── progress.ts           # localStorage progress (per challenge id)
 ```
 
-**Adding a challenge type** (e.g. simulated SAP-screen clicks, or live OpenUI5
-code that really runs in the browser) means adding one component and one line in
-`challenges/index.tsx` — lessons, routing, and progress never change. That
-extensibility is intentional: it lets the "interactive" bar rise over time
-without a rewrite.
+**Adding a challenge type** means adding one component and one line in
+`challenges/index.tsx` — lessons, routing, and progress never change. This is
+how the interactivity bar was raised from quizzes → simulated screens → live
+OpenUI5 code without touching the rest of the app.
 
 **Adding a lesson or track**: author it as typed data (a `zh.ts` / `en.ts` pair
 with matching ids) under `content/`, and list it per-locale in

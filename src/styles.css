@@ -460,6 +460,65 @@ a {
   }
 }
 
+/* code lab (live UI5) */
+.code-lab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 6px 0;
+}
+.code-editor {
+  width: 100%;
+  min-height: 190px;
+  background: #1c2430;
+  color: #e6e9ef;
+  border: 1px solid #2b3442;
+  border-radius: 8px;
+  padding: 12px;
+  font: 13px/1.55 "SF Mono", Menlo, Consolas, monospace;
+  resize: vertical;
+  tab-size: 2;
+}
+.code-preview {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.code-preview-bar {
+  background: #eef1f6;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--mut);
+  padding: 6px 10px;
+}
+.code-iframe {
+  border: 0;
+  width: 100%;
+  min-height: 158px;
+  background: #fff;
+}
+.code-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+.code-toolbar .btn-check {
+  margin-top: 0;
+}
+.code-err {
+  color: var(--bad);
+  font-size: 13px;
+}
+@media (max-width: 560px) {
+  .code-lab {
+    grid-template-columns: 1fr;
+  }
+}
+
 .btn-check {
   margin-top: 14px;
   background: var(--brand);
